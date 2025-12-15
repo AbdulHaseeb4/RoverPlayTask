@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class UIManager1 : MonoBehaviour
@@ -37,7 +36,6 @@ public class UIManager1 : MonoBehaviour
 
     private void Show(CanvasGroup g)
     {
-        g.gameObject.SetActive(true);
         g.alpha = 1;
         g.blocksRaycasts = true;
         g.interactable = true;
@@ -48,6 +46,5 @@ public class UIManager1 : MonoBehaviour
         g.alpha = 0;
         g.blocksRaycasts = false;
         g.interactable = false;
-        g.gameObject.SetActive(false);
     }
 }

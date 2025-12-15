@@ -5,31 +5,52 @@ public class UIManager2 : MonoBehaviour
 {
     public static UIManager2 Instance;
 
-    [Header("Add ALL panels here (first = default)")]
+    [Header("All Panels")]
     [SerializeField] private List<CanvasGroup> panels;
 
     private void Awake()
     {
         Instance = this;
 
-        // hide all
         foreach (var p in panels)
             Hide(p);
 
-        // default screen = first panel
         if (panels.Count > 0)
             Show(panels[0]);
     }
 
-    // MAIN FUNCTION FOR BUTTONS
-    public void ShowPanel(string panelName)
+    public void ShowPanel(CanvasGroup target)
+    {
+        foreach (var p in panels)
+            Hide(p);
+
+        Show(target);
+    }
+
+    public void ShowPopup(CanvasGroup popup)
     {
         foreach (var p in panels)
         {
-            if (p.name == panelName)
-                Show(p);
-            else
-                Hide(p);
+            if (p.alpha > 0)
+            {
+                p.blocksRaycasts = false;
+            }
+        }
+
+        Show(popup);
+    }
+
+    public void ClosePopup(CanvasGroup popup)
+    {
+        Hide(popup);
+
+        foreach (var p in panels)
+        {
+            if (p.alpha > 0)
+            {
+                p.interactable = true;
+                p.blocksRaycasts = true;
+            }
         }
     }
 
