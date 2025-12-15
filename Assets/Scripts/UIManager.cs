@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class UIManager2 : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public static UIManager2 Instance;
+    public static UIManager Instance;
 
     [Header("All Panels")]
     [SerializeField] private List<CanvasGroup> panels;
